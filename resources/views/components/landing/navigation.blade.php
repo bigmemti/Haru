@@ -31,7 +31,7 @@
             </div>
             <div class="flex-none">
                 <button class="btn">
-                    <a href="">
+                    <a href="{{ route('login') }}">
                         {{ __('login | register') }}
                     </a>
                 </button>
