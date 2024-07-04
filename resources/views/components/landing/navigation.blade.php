@@ -30,11 +30,11 @@
                 </div>
             </div>
             <div class="flex-none">
-                <button class="btn">
-                    <a href="{{ route('login') }}">
+                <a href="{{ route('login') }}">
+                    <button class="btn">
                         {{ __('login | register') }}
-                    </a>
-                </button>
+                    </button>
+                </a>
                 <div class="divider lg:divider-horizontal py-1"></div>
               <div class="dropdown dropdown-end">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
