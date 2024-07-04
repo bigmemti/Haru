@@ -28,14 +28,16 @@
     "Profile Information" : "اطلاعات نمایه ",
     "Update Password" : "بروزرسانی گذرواژه",
     "Already registered?" : "قبلا ثبت‌نام کردید؟",
-    "Email Password Reset Link" : "پست الکترونیک جهت بازنشانی گذرواژه",
-    "We have emailed your password reset link." : "ما پیوند بازنشانی گذرواژه شما را پست الکترونیک کرده ایم.",
+    "Resend Verification Email" : "ارسال دوباره تاییده",
     "Forgot your password?" : "آیا گذرواژه خود را فراموش کردید؟",
+    "Email Password Reset Link" : "پست الکترونیک جهت بازنشانی گذرواژه",
     "Are you sure you want to delete your account?" : "آیا مطمئن هستید که می خواهید حساب خود را حذف کنید؟",
+    "We have emailed your password reset link." : "ما پیوند بازنشانی گذرواژه شما را پست الکترونیک کرده ایم.",
     "Update your account's profile information and email address." : "اطلاعات نمایه و نشانی پست الکترونیک حساب خود را به روز کنید.",
     "With this action, the user will be unavailable and disabled!" : "با این عمل  کاربر از دسترس خارج خواهد شد و غیرفعال میشود!",
     "Ensure your account is using a long, random password to stay secure." : "اطمینان حاصل کنید که حساب شما از یک گذرواژه طولانی و تصادفی برای حفظ امنیت استفاده می کند.",
     "Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account." : "پس از حذف حساب شما، تمام منابع و داده های آن برای همیشه حذف می شوند. لطفاً گذرواژه خود را وارد کنید تا تأیید کنید که می خواهید حساب خود را برای همیشه حذف کنید.",
     "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain." : "پس از حذف حساب شما، تمام منابع و داده های آن برای همیشه حذف می شوند. قبل از حذف حساب خود، لطفاً هر گونه داده یا اطلاعاتی را که می خواهید حفظ کنید دانلود کنید.",
-    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one." : "گذرواژه خود را فراموش کرده اید؟ مشکلی نیست فقط آدرس ایمیل خود را به ما اطلاع دهید و ما یک پیوند بازنشانی گذرواژه را برای شما ایمیل می کنیم که به شما امکان می دهد رمز جدیدی را انتخاب کنید."
+    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one." : "گذرواژه خود را فراموش کرده اید؟ مشکلی نیست فقط آدرس ایمیل خود را به ما اطلاع دهید و ما یک پیوند بازنشانی گذرواژه را برای شما ایمیل می کنیم که به شما امکان می دهد رمز جدیدی را انتخاب کنید.",
+    "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another." : "با تشکر برای ثبت نام! قبل از شروع، آیا می توانید آدرس ایمیل خود را با کلیک کردن روی پیوندی که به تازگی برای شما ایمیل کرده ایم تأیید کنید؟ اگر ایمیلی را دریافت نکردید، با کمال میل یک ایمیل دیگر برای شما ارسال خواهیم کرد."
 }
