@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Events\UserCreated;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -37,6 +38,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'created' => UserCreated::class,
     ];
 
+    const ADMINISTRATOR_TYPE = 0;
+    const USER_TYPE = 1;
+
     /**
      * Get the attributes that should be cast.
      *
@@ -48,6 +52,13 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    protected function isAdministrator(): Attribute
+    {
+        return Attribute::make(
+            get: fn (null $value,array $attributes) => $attributes['role'] === self::ADMINISTRATOR_TYPE,
+        );
     }
 
     public function wallet(){
