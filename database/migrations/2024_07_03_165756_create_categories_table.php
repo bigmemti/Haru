@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->string('image');
-            $table->foreignIdFor(Category::class, 'parent_id')->constrained();
+            $table->foreignId('parent_id')->nullable()->references('id')->on('categories')->constrained();
             $table->timestamps();
             $table->softDeletes();
         });

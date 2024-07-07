@@ -15,6 +15,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/dashboard')->group(function () {
         Route::get('/', [MainController::class, 'dashboard'])->name('dashboard');
 
+        Route::name('dashboard.')->group(function(){
+            Route::resources([
+                'category' => CategoryController::class,
+            ]);
+        });
     });
 });
 

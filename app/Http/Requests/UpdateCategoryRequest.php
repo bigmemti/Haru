@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateCategoryRequest extends FormRequest
@@ -11,7 +12,7 @@ class UpdateCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Gate::allows('update', request()->category);
     }
 
     /**
@@ -22,7 +23,9 @@ class UpdateCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "name" => "string|min:4|max:255|required|unique:categories,name,". request()->category->id . ',id',
+            "parent_id" => "nullable|integer|exists:categories,id",
+            "image" => "file|image|nullable|max:2048"
         ];
     }
 }

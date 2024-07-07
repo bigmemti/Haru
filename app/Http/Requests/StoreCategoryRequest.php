@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Category;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCategoryRequest extends FormRequest
@@ -11,7 +13,7 @@ class StoreCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Gate::allows('create', Category::class);
     }
 
     /**
@@ -22,7 +24,9 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "name" => "string|min:4|max:255|required|unique:categories,name",
+            "parent_id" => "nullable|integer|exists:categories,id",
+            "image" => "file|image|required|max:2048"
         ];
     }
 }
