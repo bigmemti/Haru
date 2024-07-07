@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Brand;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreBrandRequest extends FormRequest
@@ -11,7 +13,7 @@ class StoreBrandRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Gate::allows('create', Brand::class);
     }
 
     /**
@@ -22,7 +24,8 @@ class StoreBrandRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "name" => "string|min:4|max:255|required|unique:brands,name",
+            "image" => "file|image|required|max:2048"
         ];
     }
 }

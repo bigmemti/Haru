@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\MainController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', [MainController::class, 'welcome']);
 
@@ -18,6 +19,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::name('dashboard.')->group(function(){
             Route::resources([
                 'category' => CategoryController::class,
+                'brand' => BrandController::class,
             ]);
         });
     });

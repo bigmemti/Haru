@@ -9,11 +9,23 @@ use Illuminate\Auth\Access\Response;
 class BrandPolicy
 {
     /**
+     * Perform pre-authorization checks.
+     */
+    public function before(User $user, string $ability): bool|null
+    {
+        if ($user->is_administrator) {
+            return true;
+        }
+
+        return null;
+    }
+
+    /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -21,7 +33,7 @@ class BrandPolicy
      */
     public function view(User $user, Brand $brand): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -29,7 +41,7 @@ class BrandPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -37,7 +49,7 @@ class BrandPolicy
      */
     public function update(User $user, Brand $brand): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -45,7 +57,7 @@ class BrandPolicy
      */
     public function delete(User $user, Brand $brand): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -53,7 +65,7 @@ class BrandPolicy
      */
     public function restore(User $user, Brand $brand): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -61,6 +73,6 @@ class BrandPolicy
      */
     public function forceDelete(User $user, Brand $brand): bool
     {
-        //
+        return false;
     }
 }
