@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Product;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateProductRequest extends FormRequest
@@ -11,7 +13,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Gate::allows('create', Product::class);
     }
 
     /**
@@ -22,7 +24,12 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "name" => "string|min:4|max:255|required|unique:categories,name,". request()->product->id . ',id',
+            "category_id" => "required|integer|exists:categories,id",
+            "brand_id" => "required|integer|exists:brands,id",
+            "price" => "required|integer",
+            "description" => "required|max:2048|string",
+            "image" => "file|image|nullable|max:2048"
         ];
     }
 }

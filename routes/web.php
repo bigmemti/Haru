@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 
@@ -20,6 +21,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::resources([
                 'category' => CategoryController::class,
                 'brand' => BrandController::class,
+                'product' => ProductController::class,
             ]);
         });
     });
