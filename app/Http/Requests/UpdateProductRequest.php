@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Product;
+use App\Rules\LeafCategory;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,7 +26,7 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             "name" => "string|min:4|max:255|required|unique:categories,name,". request()->product->id . ',id',
-            "category_id" => "required|integer|exists:categories,id",
+            "category_id" => ["required","integer","exists:categories,id", new LeafCategory],
             "brand_id" => "required|integer|exists:brands,id",
             "price" => "required|integer",
             "description" => "required|max:2048|string",

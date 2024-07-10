@@ -44,7 +44,14 @@
                                     </div>
                                     <div>
                                       <div class="font-bold">{{ $category->name }}</div>
-                                      {{-- <div class="text-sm opacity-50">United States</div> --}}
+                                      <div class="text-sm opacity-50">
+                                        @if ($category->children_count)
+                                            <a href="">{{ $category->children_count }} {{ __('Child') }}</a>
+                                        @endif
+                                        @if ($category->products()->count())
+                                            <a href="">{{ $category->products()->count() }} {{ __('Product') }}</a>
+                                        @endif
+                                      </div>
                                     </div>
                                   </div>
                                 </td>

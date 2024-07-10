@@ -25,17 +25,17 @@
                                 <input type="text" class="gorw border-0 focus:ring-0" :value='name.trim().replace(/\s+/g, "-")' placeholder="{{ Str::slug('کره بادوم زمینی', '-', null) }}"  disabled/>
                             </label>
 
-                            <select class="select select-bordered" name="category_id" @disabled(!$categories->count())>
-                                <option value="" @selected(!old('category_id')) disabled>{{ __('Category') }}</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" @selected(old('category_id')  == $category->id)>{{ $category->name }}</option>
-                                    @endforeach
+                            <select class="select select-bordered" name="category_id" @disabled(!$hierarchy->count())>
+                                <option value="" @selected(true) disabled>{{ __('Category') }}</option>
+                                @foreach($hierarchy as $level)
+                                    @include('dashboard.product.partials.category-option', ['level' => $level])
+                                @endforeach
                             </select>
                             @error('category_id')
                                 <p class="text-error">{{ $message }}</p>
                             @enderror
 
-                            <select class="select select-bordered" name="brand_id" @disabled(!$categories->count())>
+                            <select class="select select-bordered" name="brand_id" @disabled(!$brands->count())>
                                 <option value="" @selected(!old('brand_id')) disabled>{{ __('Brand') }}</option>
                                 @foreach ($brands as $brand)
                                 <option value="{{ $brand->id }}" @selected(old('brand_id')  == $brand->id)>{{ $brand->name }}</option>

@@ -19,7 +19,7 @@ class CategoryController extends Controller
         Gate::authorize('viewAny', Category::class);
 
         return view('dashboard.category.index', [
-            'categories' => Category::all(),
+            'categories' => Category::withCount(['children'])->get(),
         ]);
     }
 

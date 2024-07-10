@@ -31,7 +31,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('dashboard.product.create', [
-            'categories' => Category::all(),
+            'hierarchy' => Category::leafCategoriesWithHierarchy(),
             'brands' => Brand::all(),
         ]);
     }
@@ -77,7 +77,7 @@ class ProductController extends Controller
 
         return view('dashboard.product.edit', [
             'product' => $product,
-            'categories' => Category::all(),
+            'hierarchy' => Category::leafCategoriesWithHierarchy(),
             'brands' => Brand::all(),
         ]);
     }
