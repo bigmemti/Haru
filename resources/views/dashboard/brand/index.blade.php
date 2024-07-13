@@ -45,7 +45,11 @@
                                     </div>
                                     <div>
                                       <div class="font-bold">{{ $brand->name }}</div>
-                                      {{-- <div class="text-sm opacity-50">United States</div> --}}
+                                      <div class="text-sm opacity-50">
+                                        @if ($brand->products_count)
+                                            <a href="">{{ $brand->products_count }} {{ __('Child') }}</a>
+                                        @endif
+                                    </div>
                                     </div>
                                   </div>
                                 </td>

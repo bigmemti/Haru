@@ -19,7 +19,7 @@ class BrandController extends Controller
         Gate::authorize('viewAny', Brand::class);
 
         return view('dashboard.brand.index', [
-            'brands' => Brand::all(),
+            'brands' => Brand::withCount(['products'])->get(),
         ]);
     }
 

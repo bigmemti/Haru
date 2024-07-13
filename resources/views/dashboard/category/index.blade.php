@@ -24,6 +24,8 @@
                               <th>{{ __('Name') }}</th>
                               <th>{{ __('Slug') }}</th>
                               <th>{{ __('Parent') }}</th>
+                              <th>{{ __('Created At') }}</th>
+                              <th>{{ __('Updated At') }}</th>
                               <th>{{ __('Actions') }}</th>
                             </tr>
                           </thead>
@@ -59,6 +61,8 @@
                                     {{ $category->slug }}
                                 </td>
                                 <td> {{ $category->parent?->name }}</td>
+                                <td> {{ $category->created_at }} </td>
+                                <td> {{ $category->updated_at }} </td>
                                 <th>
                                   <a href="{{ route('dashboard.category.show', ['category' => $category]) }}" class="btn text-white btn-info btn-xs">{{ __('show') }}</a>
                                   <a href="{{ route('dashboard.category.edit', ['category' => $category]) }}" class="btn text-white btn-warning btn-xs">{{ __('edit') }}</a>
@@ -87,6 +91,8 @@
                                 <th>{{ __('Name') }}</th>
                                 <th>{{ __('Slug') }}</th>
                                 <th>{{ __('Parent') }}</th>
+                                <th>{{ __('Created At') }}</th>
+                                <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
                             </tr>
                           </tfoot>
