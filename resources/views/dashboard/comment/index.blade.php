@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Brand List') }}
+            {{ __('Comment List') }}
         </h2>
     </x-slot>
 
@@ -9,59 +9,35 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-
-                    <div class="flex justify-end">
-                        <a href="{{ route('dashboard.brand.create') }}">
-                            <button class="btn btn-sm btn-success">{{ __('create a new brand') }} +</button>
-                        </a>
-                    </div>
-
                     <div class="overflow-x-auto">
                         <table class="table">
                           <thead>
                             <tr>
                               <th>{{ __('Id') }}</th>
-                              <th>{{ __('Name') }}</th>
-                              <th>{{ __('Slug') }}</th>
+                              <th>{{ __('body') }}</th>
+                              <th>{{ __('Product') }}</th>
+                              <th>{{ __('User') }}</th>
                               <th>{{ __('Created At') }}</th>
                               <th>{{ __('Updated At') }}</th>
                               <th>{{ __('Actions') }}</th>
                             </tr>
                           </thead>
                           <tbody>
-                            @foreach ($brands as $brand)
+                            @foreach ($comments as $comment)
                             <tr>
                                 <td>
-                                    {{ $brand->id }}
+                                    {{ $comment->id }}
                                 </td>
                                 <td>
-                                  <div class="flex items-center gap-3">
-                                    <div class="avatar">
-                                      <div class="mask mask-squircle h-12 w-12">
-                                        <img
-                                          src="{{ asset("/storage/$brand->image") }}"
-                                          alt="{{ $brand->name }}" />
-                                      </div>
-                                    </div>
-                                    <div>
-                                      <div class="font-bold">{{ $brand->name }}</div>
-                                      <div class="text-sm opacity-50">
-                                        @if ($brand->products_count)
-                                            <a href="">{{ $brand->products_count }} {{ __('Product') }}</a>
-                                        @endif
-                                    </div>
-                                    </div>
-                                  </div>
+                                    {{ str()->limit($comment->body, 50) }}
                                 </td>
-                                <td>
-                                    {{ $brand->slug }}
-                                </td>
-                                <td> {{ $brand->created_at }} </td>
-                                <td> {{ $brand->updated_at }} </td>
+                                <td> {{ $comment->product->name }}</td>
+                                <td> {{ $comment->user->name }}</td>
+                                <td> {{ $comment->created_at }}</td>
+                                <td> {{ $comment->updated_at }}</td>
                                 <th>
-                                  <a href="{{ route('dashboard.brand.show', ['brand' => $brand]) }}" class="btn text-white btn-info btn-xs">{{ __('show') }}</a>
-                                  <a href="{{ route('dashboard.brand.edit', ['brand' => $brand]) }}" class="btn text-white btn-warning btn-xs">{{ __('edit') }}</a>
-                                  <form x-data='{show : false}' x-ref="form" @submit.prevent="show = true" action="{{ route('dashboard.brand.destroy', ['brand' => $brand]) }}" method="POST" class="inline">
+                                  <a href="{{ route('dashboard.comment.show', ['comment' => $comment]) }}" class="btn text-white btn-info btn-xs">{{ __('show') }}</a>
+                                  <form x-data='{show : false}' x-ref="form" @submit.prevent="show = true" action="{{ route('dashboard.comment.destroy', ['comment' => $comment]) }}" method="POST" class="inline">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-error text-white btn-xs">{{ __('delete') }}</button>
@@ -83,8 +59,9 @@
                           <tfoot>
                             <tr>
                                 <th>{{ __('Id') }}</th>
-                                <th>{{ __('Name') }}</th>
-                                <th>{{ __('Slug') }}</th>
+                                <th>{{ __('body') }}</th>
+                                <th>{{ __('Product') }}</th>
+                                <th>{{ __('User') }}</th>
                                 <th>{{ __('Created At') }}</th>
                                 <th>{{ __('Updated At') }}</th>
                                 <th>{{ __('Actions') }}</th>
