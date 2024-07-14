@@ -19,12 +19,18 @@
                         <x-nav-link :href="route('dashboard.category.index')" :active="request()->routeIs('dashboard.category.*')">
                             {{ __('Category') }}
                         </x-nav-link>
+                    @endcan
+                    @can('viewAny', App\Models\Brand::class)
                         <x-nav-link :href="route('dashboard.brand.index')" :active="request()->routeIs('dashboard.brand.*')">
                             {{ __('Brand') }}
                         </x-nav-link>
+                    @endcan
+                    @can('viewAny', App\Models\Product::class)
                         <x-nav-link :href="route('dashboard.product.index')" :active="request()->routeIs('dashboard.product.*')">
                             {{ __('Product') }}
                         </x-nav-link>
+                    @endcan
+                    @can('viewAny', App\Models\Comment::class)
                         <x-nav-link :href="route('dashboard.comment.index')" :active="request()->routeIs('dashboard.comment.*')">
                             {{ __('Comment') }}
                         </x-nav-link>
@@ -84,18 +90,26 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard.category.index')" :active="request()->routeIs('dashboard.category.*')">
-                {{ __('Category') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard.brand.index')" :active="request()->routeIs('dashboard.brand.*')">
-                {{ __('Brand') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard.product.index')" :active="request()->routeIs('dashboard.product.*')">
-                {{ __('Product') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard.comment.index')" :active="request()->routeIs('dashboard.comment.*')">
-                {{ __('Comment') }}
-            </x-responsive-nav-link>
+            @can('viewAny', App\Models\Category::class)
+                <x-responsive-nav-link :href="route('dashboard.category.index')" :active="request()->routeIs('dashboard.category.*')">
+                    {{ __('Category') }}
+                </x-responsive-nav-link>
+            @endcan
+            @can('viewAny', App\Models\Brand::class)
+                <x-responsive-nav-link :href="route('dashboard.brand.index')" :active="request()->routeIs('dashboard.brand.*')">
+                    {{ __('Brand') }}
+                </x-responsive-nav-link>
+            @endcan
+            @can('viewAny', App\Models\Product::class)
+                <x-responsive-nav-link :href="route('dashboard.product.index')" :active="request()->routeIs('dashboard.product.*')">
+                    {{ __('Product') }}
+                </x-responsive-nav-link>
+            @endcan
+            @can('viewAny', App\Models\Comment::class)
+                <x-responsive-nav-link :href="route('dashboard.comment.index')" :active="request()->routeIs('dashboard.comment.*')">
+                    {{ __('Comment') }}
+                </x-responsive-nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->
