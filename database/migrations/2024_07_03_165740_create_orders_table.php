@@ -15,8 +15,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained();
-            $table->tinyInteger('status')->unsigned();
-            $table->timestamp('expire_at');
+            $table->tinyInteger('status')->unsigned()->default(0);
+            $table->timestamp('expired_at');
             $table->timestamps();
             $table->softDeletes();
         });

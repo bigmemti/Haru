@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Http\Requests\StoreOrderRequest;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\UpdateOrderRequest;
 
 class OrderController extends Controller
@@ -13,23 +13,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
-    }
+        Gate::authorize('viewAny', Order::class);
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreOrderRequest $request)
-    {
-        //
+        return view('dashboard.order.index', [
+            'orders' => Order::with('user')->get(),
+        ]);
     }
 
     /**
@@ -37,15 +25,11 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
-    }
+        Gate::authorize('view', $order);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Order $order)
-    {
-        //
+        return view('dashboard.order.show', [
+            'order' => $order->load(['products']),
+        ]);
     }
 
     /**
@@ -53,7 +37,12 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
-        //
+        dd($request->all());
+        $order->update([
+            'status' => $request->status,
+        ]);
+
+        return to_route('dashboard.order.index')->with('success', __('Order updated successfully.'));
     }
 
     /**
@@ -61,6 +50,10 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        Gate::authorize('delete', $order);
+
+        $order->delete();
+
+        return to_route('dashboard.order.index')->with('success', __('Order deleted successfully.'));
     }
 }

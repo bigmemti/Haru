@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', [MainController::class, 'welcome']);
 
@@ -30,6 +31,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 'comment' => CommentController::class,
             ], [
                 'only' => ['index', 'show', 'destroy']
+            ]);
+
+            Route::resources([
+                'order' => OrderController::class,
+            ], [
+                'only' => ['index', 'show', 'update','destroy']
             ]);
         });
     });

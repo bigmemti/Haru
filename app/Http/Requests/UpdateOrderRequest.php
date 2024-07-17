@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Models\Order;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateOrderRequest extends FormRequest
 {
@@ -11,7 +14,7 @@ class UpdateOrderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Gate::allows('update', request()->order);
     }
 
     /**
@@ -22,7 +25,7 @@ class UpdateOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'status' => ['required', 'integer', Rule::in([Order::ORDER_CREATED_STATUS,])],
         ];
     }
 }

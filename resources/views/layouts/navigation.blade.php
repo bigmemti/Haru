@@ -35,6 +35,11 @@
                             {{ __('Comment') }}
                         </x-nav-link>
                     @endcan
+                    @can('viewAny', App\Models\Order::class)
+                        <x-nav-link :href="route('dashboard.order.index')" :active="request()->routeIs('dashboard.order.*')">
+                            {{ __('Order') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -108,6 +113,11 @@
             @can('viewAny', App\Models\Comment::class)
                 <x-responsive-nav-link :href="route('dashboard.comment.index')" :active="request()->routeIs('dashboard.comment.*')">
                     {{ __('Comment') }}
+                </x-responsive-nav-link>
+            @endcan
+            @can('viewAny', App\Models\Order::class)
+                <x-responsive-nav-link :href="route('dashboard.order.index')" :active="request()->routeIs('dashboard.order.*')">
+                    {{ __('Order') }}
                 </x-responsive-nav-link>
             @endcan
         </div>
