@@ -64,14 +64,20 @@
                                 <td> {{ $category->created_at }} </td>
                                 <td> {{ $category->updated_at }} </td>
                                 <th>
-                                  <a href="{{ route('dashboard.category.show', ['category' => $category]) }}" class="btn text-white btn-info btn-xs">{{ __('show') }}</a>
-                                  <a href="{{ route('dashboard.category.edit', ['category' => $category]) }}" class="btn text-white btn-warning btn-xs">{{ __('edit') }}</a>
+                                  <a href="{{ route('dashboard.category.show', ['category' => $category]) }}" class="btn text-white light:btn-info btn-xs tooltip inline-flex" data-tip="{{ __('show') }}">
+                                    <i class="fa-sharp fa-light fa-eye dark:text-info"></i>
+                                  </a>
+                                  <a href="{{ route('dashboard.category.edit', ['category' => $category]) }}" class="btn text-white light:btn-warning btn-xs tooltip inline-flex" data-tip="{{ __('edit') }}">
+                                    <i class="fa-sharp fa-light fa-pen dark:text-warning"></i>
+                                  </a>
                                   <form x-data='{show : false}' x-ref="form" @submit.prevent="show = true" action="{{ route('dashboard.category.destroy', ['category' => $category]) }}" method="POST" class="inline">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-error text-white btn-xs">{{ __('delete') }}</button>
+                                    <button class="btn light:btn-error text-white btn-xs tooltip inline-flex" data-tip="{{ __('delete') }}">
+                                        <i class="fa-sharp fa-light fa-trash dark:text-error"></i>
+                                    </button>
                                     <dialog :class="{'modal-open' : show}" class="modal">
-                                        <div @click.outside="open = false" class="modal-box">
+                                        <div @click.outside="show = false" class="modal-box">
                                           <h3 class="text-lg font-bold text-warning">{{ __('Warning') }}!</h3>
                                           <p class="py-4">{{ __('are you sure?') }}</p>
                                           <div class="modal-action space-x-3 rtl:space-x-reverse">

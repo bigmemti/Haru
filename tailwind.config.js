@@ -1,5 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+const { themeVariants, prefersLight } = require("tailwindcss-theme-variants");
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -17,5 +18,15 @@ export default {
         },
     },
 
-    plugins: [require('daisyui'),forms],
+    plugins: [require('daisyui'),forms,themeVariants({themes: {light: {mediaQuery: prefersLight /* "@media (prefers-color-scheme: light)" */,}}}),],
 };
+// themeVariants({
+//     themes: {
+//         light: {
+//             selector: ".light-theme",
+//         },
+//         dark: {
+//             selector: ".dark-theme",
+//         },
+//     },
+// }),
