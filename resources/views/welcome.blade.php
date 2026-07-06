@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ (in_array(app()->getLocale(), ['fa', 'ar'])) ? 'rtl' : 'ltr' }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ (in_array(app()->getLocale(), ['fa', 'ar'])) ? 'rtl' : 'ltr' }}" x-data="{
+    darkMode: localStorage.getItem('darkMode')
+    || localStorage.setItem('darkMode', 'system')}"
+x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
+x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches), 'light': darkMode === 'light'}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +17,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased dark:bg-black dark:text-white/50">
+    <body class="font-sans bg-white dark:bg-gray-900 antialiased dark:text-white/50">
         <header>
             <x-landing.navigation/>
         </header>
@@ -42,22 +46,12 @@
 
                 <section id="categories">
                     <h2 class="text-2xl font-bold text-center">دسته بندی کالاهای هایپر</h2>
-                    <div class="my-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
-                        <x-landing.category-card/>
+                    <div class="my-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                        @forelse ($categories as $category)
+                            <x-landing.category-card :category="$category" />
+                        @empty
+                            
+                        @endforelse
                     </div>
                 </section>
                 <x-carousel background="bg-orange-600"/>

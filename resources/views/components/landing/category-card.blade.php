@@ -1,10 +1,10 @@
 <div class="p-3">
-    <a href="#" class="flex flex-col items-center">
+    <a href="{{ route('category.show', ['category' => $category]) }}" class="flex flex-col items-center">
         <div>
-            <img src="https://www.zagros.market/uploads/IMG-0068-500x500.jpg" class="w-44" alt="">
+            <img src="{{ asset("storage/$category->image") }}" class="w-44 aspect-square rounded-lg" alt="{{ $category->name }}">
         </div>
-        <p class="text-center">
-            پروتئینی
+        <p class="text-center mt-2">
+            {{ $category->name }}
         </p>
     </a>
 </div>

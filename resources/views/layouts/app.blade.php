@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ (in_array(app()->getLocale(), ['fa', 'ar'])) ? 'rtl' : 'ltr' }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ (in_array(app()->getLocale(), ['fa', 'ar'])) ? 'rtl' : 'ltr' }}" x-data="{
+    darkMode: localStorage.getItem('darkMode')
+    || localStorage.setItem('darkMode', 'system')}"
+x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
+x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches), 'light': darkMode === 'light'}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

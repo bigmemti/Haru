@@ -9,6 +9,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
+    darkMode : 'selector',
 
     theme: {
         extend: {
@@ -18,15 +19,18 @@ export default {
         },
     },
 
-    plugins: [require('daisyui'),forms,themeVariants({themes: {light: {mediaQuery: prefersLight /* "@media (prefers-color-scheme: light)" */,}}}),],
+    plugins: [
+        require('daisyui'),
+        forms,
+        themeVariants({
+            themes: {
+                light: {
+                    selector: ".light",
+                },
+                dark: {
+                    selector: ".dark",
+                },
+            },
+        }),
+    ],
 };
-// themeVariants({
-//     themes: {
-//         light: {
-//             selector: ".light-theme",
-//         },
-//         dark: {
-//             selector: ".dark-theme",
-//         },
-//     },
-// }),

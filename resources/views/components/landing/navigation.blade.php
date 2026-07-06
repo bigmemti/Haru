@@ -1,25 +1,16 @@
 <nav>
     <div class="border-b shadow-md">
-        <div class="container mx-auto navbar bg-base-100 items-start mt-1">
+        <div class="container mx-auto navbar  items-start mt-1">
             <div class="flex-1 flex-col items-start gap-2">
                 <div class="flex gap-4">
-                    <a class="btn btn-ghost text-xl">{{ config('app.name', 'Laravel') }}</a>
-                    <label class="input input-bordered flex rtl:flex-row-reverse items-center gap-2">
+                    <a class="btn btn-ghost text-xl light:text-black">{{ config('app.name', 'Laravel') }}</a>
+                    <label class="input light:bg-white input-bordered flex rtl:flex-row-reverse items-center gap-2">
                       <input type="text" class="grow border-0 focus:ring-0" placeholder="{{ __('Search') }}" />
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 16 16"
-                        fill="currentColor"
-                        class="h-4 w-4 opacity-70">
-                        <path
-                          fill-rule="evenodd"
-                          d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                          clip-rule="evenodd" />
-                      </svg>
+                      <i class="fa-sharp fa-light fa-magnifying-glass"></i>
                     </label>
                 </div>
                 <div class="flex">
-                    <ul class="menu menu-horizontal bg-base-200 bg-inherit">
+                    <ul class="menu menu-horizontal bg-base-200 bg-inherit light:text-black">
                         <li><a>{{ __('Home') }}</a></li>
                         <li><a>{{ __('How to order') }}</a></li>
                         <li><a>{{ __('My orders') }}</a></li>
@@ -31,11 +22,14 @@
             </div>
             <div class="flex-none">
                 <a href="{{ route('login') }}">
-                    <button class="btn">
+                    <button class="btn light:btn-primary">
                         {{ __('login | register') }}
                     </button>
                 </a>
                 <div class="divider lg:divider-horizontal py-1"></div>
+              <div class="p-2 h-9 w-9 flex items-center justify-center border-2 rounded-full">
+                <i class="fa-sharp fa-light cursor-pointer fa-rotate-by transition-all duration-150" :class="{'fa-sun-bright' : darkMode === 'light', 'fa-moon ' : darkMode === 'dark'}" style="--fa-rotate-angle: -45deg;" @click="darkMode = (darkMode === 'dark')? 'light' : 'dark'"></i>
+              </div>
               <div class="dropdown dropdown-end">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
                   <div class="indicator">

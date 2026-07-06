@@ -8,6 +8,9 @@
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
+                    <div class="p-2 h-9 w-9 flex items-center justify-center border-2 rounded-full">
+                        <i class="fa-sharp fa-light cursor-pointer fa-rotate-by transition-all duration-150" :class="{'fa-sun-bright' : darkMode === 'light', 'fa-moon ' : darkMode === 'dark'}" style="--fa-rotate-angle: -45deg;" @click="darkMode = (darkMode === 'dark')? 'light' : 'dark'"></i>
+                      </div>
                 </div>
 
                 <!-- Navigation Links -->
